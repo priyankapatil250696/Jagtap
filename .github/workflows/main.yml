@@ -1,7 +1,10 @@
  name: Backup to S3
- on: 
+ on:
   schedule:
-    - cron: '0 0 * * *' 
+    - cron: '0 0 * * *' # Adjust the cron schedule to your liking
+  push:
+    branches:
+      - main
 
  jobs:
   backup:
