@@ -1,10 +1,10 @@
-name: Backup to S3
-on: 
-  push:
-    - main
+ name: Backup to S3
+ on: 
+  schedule:
+    - cron: '0 0 * * *' 
 
-jobs:
- backup:
+ jobs:
+  backup:
     runs-on: ubuntu-latest
 
     steps:
