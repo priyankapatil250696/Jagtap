@@ -1,11 +1,11 @@
 name: Backup to S3
 on:
-   push: 
-   - main
-    schedule:
+  push: 
+    - main
+  schedule:
      - cron: '*/5 * * * *' # Adjust the cron schedule to your liking
 jobs:
-    backup:
+ backup:
     runs-on: ubuntu-latest
 
     steps:
