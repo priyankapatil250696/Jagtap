@@ -26,7 +26,7 @@
       
 
         # Upload the ZIP file to the S3 bucket
-      run:  aws s3 cp backup.zip s3://your-s3-bucket-name/
+      run:  aws s3 cp backup.zip s3://mysonpriyansh
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v1
       with:
