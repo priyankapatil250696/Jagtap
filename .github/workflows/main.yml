@@ -18,6 +18,13 @@
       run: |
         # Create a ZIP archive of the repository
         zip -r backup.zip .
+        
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1 # Replace with your S3 bucket's region
 
     - name: Upload to S3
       env:
@@ -26,14 +33,9 @@
       
 
         # Upload the ZIP file to the S3 bucket
-      run:  aws s3 cp backup.zip s3://mysonpriyansh
-    - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1 # Replace with your S3 bucket's region
-
+      run:  aws s3 sync backup.zip s3://mysonpriyansh
+      
+    
     - name: Cleanup
       run: |
         # Remove the ZIP file
